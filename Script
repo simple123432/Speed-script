@@ -1,0 +1,24 @@
+--Copy all of this and paste it into your chosen executer
+-- Working 7th November 2022
+
+_G.speed = 100 -- put any number here this changes your speed
+_G.enabled = false
+
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+local root = game.Players.LocalPlayer.Character.PrimaryPart
+
+UserInputService.InputBegan:Connect(function(inputObject, processed)
+    if inputObject.KeyCode == Enum.KeyCode.Q then -- put any letter where the "Q" is as that is yuor keybind
+        _G.enabled = not _G.enabled
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if _G.enabled then
+        root.Velocity = root.CFrame.LookVector * _G.speed
+    end
+end)
+
+-- give me a star.
